@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Sopomenke</string>
+    <string name="search_hint">Poiščite sopomenke...</string>
 </resources>
