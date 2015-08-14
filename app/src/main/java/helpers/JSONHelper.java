@@ -60,11 +60,6 @@ public class JSONHelper
                     words.add(wordObject);
                 }
 
-                /*JSONObject object = array.getJSONObject(0);
-                JSONArray inside_array = object.getJSONArray("antonyms");
-
-                tv.setText(inside_array.toString());*/
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }

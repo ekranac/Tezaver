@@ -9,7 +9,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 
 
 import com.ziga.tezaver.R;
@@ -25,6 +27,46 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final Button clearSearch = (Button) findViewById(R.id.btn_clear_search);
+        final AutoCompleteTextView search = (AutoCompleteTextView) findViewById(R.id.main_search);
+
+        adapter = new WordSearchAdapter(this, null);
+        search.setAdapter(adapter);
+
+
+        search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                search.setText(adapter.getItem(i).getId());
+            }
+        });
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (search.length() == 0) {
+                    clearSearch.setVisibility(View.INVISIBLE);
+                } else {
+                    clearSearch.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+
+        clearSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                search.setText("");
+            }
+        });
     }
 
 
@@ -46,11 +88,6 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.search_btn) {
             AutoCompleteTextView search = (AutoCompleteTextView) findViewById(R.id.main_search);
-            adapter = new WordSearchAdapter(this, null);
-            search.setAdapter(adapter);
-
-            search.setVisibility(View.VISIBLE);
-
             search.setFocusableInTouchMode(true);
             search.requestFocus();
 

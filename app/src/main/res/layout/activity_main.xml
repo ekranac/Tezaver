@@ -1,16 +1,53 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <AutoCompleteTextView
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/search_hint"
-        android:layout_marginTop="10dp"
-        android:textSize="20sp"
-        android:inputType="textCapSentences"
-        android:visibility="invisible"
-        android:id="@+id/main_search"/>
+        android:background="@color/dark_blue"
+        android:layout_weight="0.3">
 
-</RelativeLayout>
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:id="@+id/search_layout">
+
+            <AutoCompleteTextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/search_hint"
+                android:layout_marginTop="10dp"
+                android:textSize="25sp"
+                android:inputType="textCapSentences"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:id="@+id/main_search"/>
+
+            <Button
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="end|center_vertical"
+                android:background="@drawable/abc_ic_clear_mtrl_alpha"
+                android:visibility="invisible"
+                android:id="@+id/btn_clear_search"/>
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7">
+
+
+        </RelativeLayout>
+
+</LinearLayout>
+
