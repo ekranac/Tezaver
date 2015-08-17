@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/size_0"
         android:orientation="vertical"
         android:layout_weight="0.6">
 
@@ -20,15 +20,15 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/search_hint"
-                android:layout_marginTop="10dp"
-                android:textSize="30sp"
+                android:layout_marginTop="@dimen/size_10"
+                android:textSize="@dimen/font_30"
                 android:inputType="textCapSentences"
                 android:id="@+id/main_search"/>
 
             <Button
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginRight="5dp"
+                android:layout_width="@dimen/size_20"
+                android:layout_height="@dimen/size_20"
+                android:layout_marginRight="@dimen/size_10"
                 android:layout_gravity="end|center_vertical"
                 android:background="@drawable/abc_ic_clear_mtrl_alpha"
                 android:visibility="invisible"
@@ -39,19 +39,20 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="@dimen/size_10"
+            android:layout_marginBottom="@dimen/size_20">
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="40dp">
+                android:layout_marginBottom="@dimen/size_40">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/font_20"
                     android:textColor="@color/dark_blue"
                     android:text="Število sopomenk: "
                     android:id="@+id/synonyms_stat"/>
@@ -59,7 +60,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="30dp"
+                    android:textSize="@dimen/font_30"
                     android:textColor="@color/dark_blue"
                     android:text="16679"
                     android:id="@+id/synonyms_stat_num"/>
@@ -71,12 +72,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="@dimen/size_10">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/font_20"
                     android:textColor="@color/dark_blue"
                     android:text="Število protipomenk: "
                     android:id="@+id/antonyms_stat"/>
@@ -84,9 +85,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="30dp"
+                    android:textSize="@dimen/font_30"
                     android:textColor="@color/dark_blue"
-                    android:text="71"
                     android:id="@+id/antonyms_stat_num"/>
 
             </LinearLayout>
@@ -103,14 +103,14 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center"
             android:text="Zadnje sopomenke"/>
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center"
@@ -120,11 +120,11 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/size_0"
         android:layout_weight="0.4">
 
         <ListView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="fill_parent"
             android:layout_weight="0.5"
             android:id="@+id/list_latest_synonyms">
@@ -132,7 +132,7 @@
         </ListView>
 
         <ListView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="fill_parent"
             android:layout_weight="0.5"
             android:id="@+id/list_latest_antonyms">

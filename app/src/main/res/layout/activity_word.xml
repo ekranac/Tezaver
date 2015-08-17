@@ -5,30 +5,35 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5">
+        android:layout_height="@dimen/size_0"
+        android:layout_weight="0.5"
+        android:layout_marginRight="@dimen/size_10">
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/font_70"
+            android:textColor="@color/dark_blue"
             android:id="@+id/tv_word"/>
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_word"
+            android:textSize="@dimen/font_40"
+            android:textColor="@color/gray"
             android:id="@+id/tv_pronunciation"/>
 
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/size_0"
         android:layout_weight="0.5"
         android:orientation="horizontal">
 
         <ListView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="fill_parent"
             android:layout_weight="0.5"
             android:id="@+id/list_synonyms">
@@ -36,7 +41,7 @@
         </ListView>
 
         <ListView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="fill_parent"
             android:layout_weight="0.5"
             android:id="@+id/list_antonyms">
