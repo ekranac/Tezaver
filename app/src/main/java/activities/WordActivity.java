@@ -67,7 +67,6 @@ public class WordActivity extends AppCompatActivity {
 class getWordData extends AsyncTask<Void, Void, Word>
 {
 
-
     public final static String WORD_ID = "com.ziga.tezaver.WORD_ID";
     private static final String WORD_URL = "http://sopomenke.si/api/v1/words/";
 
