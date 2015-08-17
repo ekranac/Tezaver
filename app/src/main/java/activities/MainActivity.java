@@ -2,7 +2,9 @@ package activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ActionBar bar = getSupportActionBar();
+        if(bar!=null)
+        {
+            bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.dark_blue)));
+        }
 
         final Button clearSearch = (Button) findViewById(R.id.btn_clear_search);
         final AutoCompleteTextView search = (AutoCompleteTextView) findViewById(R.id.main_search);

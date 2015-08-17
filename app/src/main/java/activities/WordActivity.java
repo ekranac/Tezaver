@@ -1,15 +1,13 @@
 package activities;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -39,6 +37,7 @@ public class WordActivity extends AppCompatActivity {
         ActionBar bar = getSupportActionBar();
         if(bar!=null)
         {
+            bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.dark_blue)));
             bar.setDisplayHomeAsUpEnabled(true);
         }
 

@@ -56,7 +56,7 @@ public class WordListAdapter extends ArrayAdapter<Word>
 
         if (result == null) {
             LayoutInflater inf = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            result = inf.inflate(R.layout.list_item_search, parent, false);
+            result = inf.inflate(R.layout.list_item_word, parent, false);
         }
 
         TextView tv = (TextView) result.findViewById(R.id.word_txt);
