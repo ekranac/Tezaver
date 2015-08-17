@@ -2,6 +2,7 @@ package activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -33,6 +34,13 @@ public class WordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word);
+
+        TextView tvWord = (TextView) findViewById(R.id.tv_word);
+        TextView tvPronunciation = (TextView) findViewById(R.id.tv_pronunciation);
+        Typeface robotoSlab = Typeface.createFromAsset(this.getAssets(), "RobotoSlab.ttf");
+        tvWord.setTypeface(robotoSlab);
+        tvPronunciation.setTypeface(robotoSlab);
+
 
         ActionBar bar = getSupportActionBar();
         if(bar!=null)
