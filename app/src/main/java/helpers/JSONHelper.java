@@ -66,12 +66,11 @@ public class JSONHelper
         }
 
         return words;
-
-
     }
 
     private static String createQueryURL(String query)
     {
         return QUERY_URL + query;
     }
+
 }

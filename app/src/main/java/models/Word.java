@@ -8,8 +8,8 @@ public class Word
     private String word;
     private String pronunciation;
 
-    List<Word> synonyms; // Sopomenke- ids
-    List<Word> antonyms; // Protipomenke- ids
+    List<Word> synonyms; // Sopomenke
+    List<Word> antonyms; // Protipomenke
 
 
     public Word(String id, String word, String pronunciation, List<Word> synonyms, List<Word> antonyms)
@@ -27,6 +27,9 @@ public class Word
             this.antonyms = null;
         }
     }
+
+    public Word()
+    {}
 
     public String getId() {
         return id;

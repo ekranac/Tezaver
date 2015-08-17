@@ -1,6 +1,7 @@
 package activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -22,6 +23,7 @@ import adapters.WordSearchAdapter;
 public class MainActivity extends AppCompatActivity {
 
     WordSearchAdapter adapter;
+    public final static String WORD_ID = "com.ziga.tezaver.WORD_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,11 @@ public class MainActivity extends AppCompatActivity {
         search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                search.setText(adapter.getItem(i).getId());
+                search.setText("");
+
+                Intent intent = new Intent(MainActivity.this, WordActivity.class);
+                intent.putExtra(WORD_ID, adapter.getItem(i).getId());
+                startActivity(intent);
             }
         });
 
@@ -98,5 +104,16 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+
+        AutoCompleteTextView search = (AutoCompleteTextView) findViewById(R.id.main_search);
+        if(search.hasFocus())
+        {
+            search.clearFocus();
+        }
+    }
 
 }
