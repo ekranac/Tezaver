@@ -1,14 +1,9 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/dark_blue"
     tools:context=".MainActivity">
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/dark_blue"
-        android:layout_weight="0.3">
 
         <FrameLayout
             android:layout_width="fill_parent"
@@ -21,10 +16,8 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/search_hint"
                 android:layout_marginTop="10dp"
-                android:textSize="25sp"
+                android:textSize="30sp"
                 android:inputType="textCapSentences"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
                 android:id="@+id/main_search"/>
 
             <Button
@@ -38,16 +31,5 @@
 
         </FrameLayout>
 
-    </RelativeLayout>
-
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.7">
-
-
-        </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>
 

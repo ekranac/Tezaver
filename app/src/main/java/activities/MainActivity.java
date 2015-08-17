@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 search.setText("");
 
                 Intent intent = new Intent(MainActivity.this, WordActivity.class);
-                intent.putExtra(WORD_ID, adapter.getItem(i).getId());
+                intent.putExtra(WORD_ID, adapter.getItem(i).getId().toLowerCase());
                 startActivity(intent);
             }
         });

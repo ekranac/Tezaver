@@ -24,12 +24,11 @@ public class Word
         }
         if(antonyms!=null)
         {
-            this.antonyms = null;
+            this.antonyms = antonyms;
         }
     }
 
-    public Word()
-    {}
+    public Word() {}
 
     public String getId() {
         return id;

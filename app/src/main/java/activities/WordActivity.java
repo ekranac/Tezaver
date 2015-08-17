@@ -10,6 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ziga.tezaver.R;
@@ -21,6 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import adapters.WordListAdapter;
 import models.HTTPDataHandler;
 import models.Word;
 
@@ -58,26 +62,14 @@ public class WordActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.search_btn) {
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 
 }
 
 class getWordData extends AsyncTask<Void, Void, Word>
 {
 
+
+    public final static String WORD_ID = "com.ziga.tezaver.WORD_ID";
     private static final String WORD_URL = "http://sopomenke.si/api/v1/words/";
 
     String id;
@@ -163,9 +155,35 @@ class getWordData extends AsyncTask<Void, Void, Word>
     {
         TextView tvWord = (TextView) activity.findViewById(R.id.tv_word);
         TextView tvPronunciation = (TextView) activity.findViewById(R.id.tv_pronunciation);
+        ListView listSynonyms = (ListView) activity.findViewById(R.id.list_synonyms);
+        ListView listAntonyms = (ListView) activity.findViewById(R.id.list_antonyms);
 
         tvWord.setText(wordResult.getWord());
         tvPronunciation.setText(wordResult.getPronunciation());
+        final WordListAdapter synonymsAdapter = new WordListAdapter(activity, wordResult.getSynonyms());
+        final WordListAdapter antonymsAdapter = new WordListAdapter(activity, wordResult.getAntonyms());
+
+        listSynonyms.setAdapter(synonymsAdapter);
+        listAntonyms.setAdapter(antonymsAdapter);
+
+
+        listSynonyms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(activity, WordActivity.class);
+                intent.putExtra(WORD_ID, synonymsAdapter.getItem(i).getId().toLowerCase());
+                activity.startActivity(intent);
+            }
+        });
+
+        listAntonyms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(activity, WordActivity.class);
+                intent.putExtra(WORD_ID, antonymsAdapter.getItem(i).getId().toLowerCase());
+                activity.startActivity(intent);
+            }
+        });
     }
 
     private static String createWordURL(String wordId)
