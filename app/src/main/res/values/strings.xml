@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Sopomenke</string>
     <string name="search_hint">Poiščite sopomenke...</string>
+    <string name="no_synonyms">Ni sopomenk! \nDodaj jih na sopomenke.si</string>
+    <string name="no_antonyms">Ni protipomenk! \nDodaj jih na sopomenke.si</string>
 </resources>

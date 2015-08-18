@@ -38,6 +38,7 @@ public class WordActivity extends AppCompatActivity {
         TextView tvWord = (TextView) findViewById(R.id.tv_word);
         TextView tvPronunciation = (TextView) findViewById(R.id.tv_pronunciation);
         Typeface robotoSlab = Typeface.createFromAsset(this.getAssets(), "RobotoSlab.ttf");
+
         tvWord.setTypeface(robotoSlab);
         tvPronunciation.setTypeface(robotoSlab);
 
@@ -171,6 +172,12 @@ class getWordData extends AsyncTask<Void, Void, Word>
 
         listSynonyms.setAdapter(synonymsAdapter);
         listAntonyms.setAdapter(antonymsAdapter);
+
+        TextView emptySynonyms = (TextView) activity.findViewById(R.id.synonyms_empty);
+        TextView emptyAntonyms = (TextView) activity.findViewById(R.id.antonyms_empty);
+
+        listSynonyms.setEmptyView(emptySynonyms);
+        listAntonyms.setEmptyView(emptyAntonyms);
 
 
         listSynonyms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
