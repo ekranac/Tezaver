@@ -3,4 +3,8 @@
     <string name="search_hint">Poiščite sopomenke...</string>
     <string name="no_synonyms">Ni sopomenk! \nDodaj jih na sopomenke.si</string>
     <string name="no_antonyms">Ni protipomenk! \nDodaj jih na sopomenke.si</string>
+    <string name="num_synonyms">Število sopomenk:</string>
+    <string name="num_antonyms">Število protipomenk:</string>
+    <string name="last_synonyms">Zadnje sopomenke</string>
+    <string name="last_antonyms">Zadnje protipomenke</string>
 </resources>

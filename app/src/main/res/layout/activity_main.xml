@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/font_20"
                     android:textColor="@color/dark_blue"
-                    android:text="Število sopomenk: "
+                    android:text="@string/num_synonyms"
                     android:id="@+id/synonyms_stat"/>
 
                 <TextView
@@ -79,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/font_20"
                     android:textColor="@color/dark_blue"
-                    android:text="Število protipomenk: "
+                    android:text="@string/num_antonyms"
                     android:id="@+id/antonyms_stat"/>
 
                 <TextView
@@ -107,14 +107,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:text="Zadnje sopomenke"/>
+            android:text="@string/last_synonyms"/>
 
         <TextView
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:text="Zadnje protipomenke"/>
+            android:text="@string/last_antonyms"/>
 
     </LinearLayout>
 

@@ -205,31 +205,24 @@ class getStatistics extends AsyncTask<Void, Void, Void>
                 final String synonymCount = reader.getString("synonym_count");
                 final String antonymCount = reader.getString("antonym_count");
 
-                for(int i = 0; i < latestSynonyms.length(); i++)
+                for(int i = 0; i < latestSynonyms.length(); i+=2) // // Work only on every second JSON object so there's no repetition
                 {
-                    if(i%2==0) // Work only on every second JSON object so there's no repetition
-                    {
                         object = latestSynonyms.getJSONObject(i);
                         word = object.getJSONObject("word").getString("word");
                         linkedWord = object.getJSONObject("linked_word").getString("word");
 
                         result = word + " >> " + linkedWord;
                         synonyms.add(result);
-                    }
-
                 }
 
-                for(int i = 0; i < latestAntonyms.length(); i++)
+                for(int i = 0; i < latestAntonyms.length(); i+=2)
                 {
-                    if(i%2==0)
-                    {
                         object = latestAntonyms.getJSONObject(i);
                         word = object.getJSONObject("word").getString("word");
                         linkedWord = object.getJSONObject("linked_word").getString("word");
 
                         result = word + " >> " + linkedWord;
                         antonyms.add(result);
-                    }
                 }
 
                 final ArrayAdapter<String> synonymsAdapter = new ArrayAdapter<String>(
