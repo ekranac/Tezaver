@@ -134,6 +134,11 @@ public class MainActivity extends AppCompatActivity {
             final InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.showSoftInput(search, InputMethodManager.SHOW_IMPLICIT);
         }
+        else if(id==R.id.menu_help)
+        {
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
+        }
 
         return super.onOptionsItemSelected(item);
     }

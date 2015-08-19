@@ -9,9 +9,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by ziga on 14.8.2015.
- */
 public class HTTPDataHandler
 {
     static String stream = null;

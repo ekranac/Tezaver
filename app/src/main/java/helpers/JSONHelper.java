@@ -1,14 +1,5 @@
 package helpers;
 
-import android.app.Activity;
-import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import com.ziga.tezaver.R;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,7 +7,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapters.WordSearchAdapter;
 import models.HTTPDataHandler;
 import models.Word;
 
@@ -25,7 +15,7 @@ public class JSONHelper
 
     private static final String QUERY_URL = "http://sopomenke.si/api/v1/words?query=";
 
-    public static List<Word> getWordList(Activity activity, String query)
+    public static List<Word> getWordList(String query)
     {
         List<Word> words = new ArrayList<Word>();
         Word wordObject;

@@ -7,4 +7,22 @@
     <string name="num_antonyms">Število protipomenk:</string>
     <string name="last_synonyms">Zadnje sopomenke</string>
     <string name="last_antonyms">Zadnje protipomenke</string>
+    <string name="search_label">Search</string>
+    <string name="help_label">Pomoč</string>
+
+    <string name="question_one">Kaj so sopomenke.si?</string>
+    <string name="question_two">Zakaj sopomenke.si?</string>
+    <string name="question_three">Kako lahko dodajam sopomenke/protipomenke?</string>
+    <string name="question_four">Kaj je smisel življenja?</string>
+    <string name="question_five">Kako lahko pomagam?</string>
+    <string name="question_six">Kako lahko pomagam pri razvoju?</string>
+    <string name="question_seven">Ali lahko uporabim podatke iz sopomenke.si?</string>
+
+    <string name="answer_one"><a href="http://sopomenke.si/">Sopomenke.si</a> je slovar slovenskih besed, ki vam za izbrano besedo poda sopomenke ter protipomenke. Sopomenke.si je <b>popoldanski projekt</b>, ki je namenjen vsem ljubiteljem sopomenk.</string>
+    <string name="answer_two">Slovenščina do sedaj še ni imela uporabnega slovarja sopomenk in je čas, da se to spremeni. Prav tako smo bili naveličani uporabe vedno istih besed.</string>
+    <string name="answer_three">Sopomenke in protipomenke lahko zaenkrat dodajate le preko spletne strani sopomenke.si Kliknite na gumb <b>Dodaj</b> na spletni strani besede in vnesite besedo, ki jo želite dodati. Vse ostalo se izvede avtomatsko.</string>
+    <string name="answer_four">Ležanje na plaži s čivavo v roki.</string>
+    <string name="answer_five">Še naprej uporabljite aplikacijo Sopomenke in portal <a href="http://sopomenke.si/">sopomenke.si</a>. Če kakšna sopomenka manjka, jo dodajte. Povejte svojim prijateljem in znancem. Bodite dobri drug do drugega in vse bo v redu.</string>
+    <string name="answer_six">Ni problema. Tukaj je <a href="https://github.com/aweCodeMan/Thesaurus">Github repositorij</a>.</string>
+    <string name="answer_seven">Seveda. Podatki so javno dostopni in na voljo za brskanje, spreminjanje in uporabo. V pomoč naj ti tudi služi <a href="http://sopomenke.si/api/v1/docs">API dokumentacija</a>.</string>
 </resources>

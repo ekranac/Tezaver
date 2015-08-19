@@ -5,8 +5,8 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "com.example.ziga.tezaver"
-        minSdkVersion 15
+        applicationId "com.ziga.tezaver"
+        minSdkVersion 8
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"

@@ -62,7 +62,6 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/font_30"
                     android:textColor="@color/dark_blue"
-                    android:text="16679"
                     android:id="@+id/synonyms_stat_num"/>
 
             </LinearLayout>

@@ -84,7 +84,7 @@ public class WordSearchAdapter extends ArrayAdapter<Word> implements Filterable
                 if (constraint == null || constraint.length() < 2)
                     return results;
 
-                List<Word> cityResultList = JSONHelper.getWordList(activity, constraint.toString());
+                List<Word> cityResultList = JSONHelper.getWordList(constraint.toString());
                 results.values = cityResultList;
                 results.count = cityResultList.size();
                 return results;

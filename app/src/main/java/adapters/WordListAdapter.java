@@ -2,13 +2,10 @@ package adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.ziga.tezaver.R;
@@ -16,7 +13,6 @@ import com.ziga.tezaver.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import helpers.JSONHelper;
 import models.Word;
 
 public class WordListAdapter extends ArrayAdapter<Word>
