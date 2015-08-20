@@ -5,7 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.ziga.tezaver.R;
@@ -15,16 +15,20 @@ import java.util.List;
 
 import models.Word;
 
-public class WordListAdapter extends ArrayAdapter<Word>
+
+public class RelatedWordsListAdapter extends BaseAdapter
 {
     private Activity activity;
     private Context context;
-    private List<Word> wordList = new ArrayList<Word>();
+    private List<Word> list = new ArrayList<Word>();
 
-    public WordListAdapter(Activity activity, List<Word> wordList)
+    private TextView relatedWord;
+    private Word wordObject;
+
+    public RelatedWordsListAdapter(Activity activity, List<Word> list)
     {
-        super(activity.getBaseContext(), R.layout.list_item_search, wordList);
-        this.wordList = wordList;
+        super();
+        this.list = list;
         this.activity = activity;
         this.context = activity.getBaseContext();
     }
@@ -32,16 +36,16 @@ public class WordListAdapter extends ArrayAdapter<Word>
 
     @Override
     public Word getItem(int position) {
-        if (wordList != null)
-            return wordList.get(position);
+        if (list != null)
+            return list.get(position);
 
         return null;
     }
 
     @Override
     public int getCount() {
-        if (wordList != null)
-            return wordList.size();
+        if (list != null)
+            return list.size();
 
         return 0;
     }
@@ -52,20 +56,24 @@ public class WordListAdapter extends ArrayAdapter<Word>
 
         if (result == null) {
             LayoutInflater inf = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            result = inf.inflate(R.layout.list_item_word, parent, false);
+            result = inf.inflate(R.layout.list_item_related_word, parent, false);
         }
 
-        TextView tv = (TextView) result.findViewById(R.id.word_txt);
-        String text = wordList.get(position).getWord();
-        tv.setText(text);
+        relatedWord = (TextView) result.findViewById(R.id.related_word);
+
+        wordObject = list.get(position);
+        if(wordObject!=null)
+        {
+            relatedWord.setText(wordObject.getWord());
+        }
 
         return result;
     }
 
     @Override
     public long getItemId(int position) {
-        if (wordList != null)
-            return wordList.get(position).hashCode();
+        if (list != null)
+            return list.get(position).hashCode();
 
         return 0;
     }

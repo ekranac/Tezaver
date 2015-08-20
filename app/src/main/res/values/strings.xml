@@ -25,4 +25,5 @@
     <string name="answer_five">Še naprej uporabljite aplikacijo Sopomenke in portal <a href="http://sopomenke.si/">sopomenke.si</a>. Če kakšna sopomenka manjka, jo dodajte. Povejte svojim prijateljem in znancem. Bodite dobri drug do drugega in vse bo v redu.</string>
     <string name="answer_six">Ni problema. Tukaj je <a href="https://github.com/aweCodeMan/Thesaurus">Github repositorij</a>.</string>
     <string name="answer_seven">Seveda. Podatki so javno dostopni in na voljo za brskanje, spreminjanje in uporabo. V pomoč naj ti tudi služi <a href="http://sopomenke.si/api/v1/docs">API dokumentacija</a>.</string>
+
 </resources>

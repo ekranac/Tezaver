@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -29,8 +28,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import adapters.LatestWordsListAdapter;
 import adapters.WordSearchAdapter;
+import helpers.Constants;
 import models.HTTPDataHandler;
 
 
@@ -192,15 +194,17 @@ class getStatistics extends AsyncTask<Void, Void, Void>
             {
                 // Get the full HTTP Data as JSONObject
                 JSONObject reader = new JSONObject(stream);
+                HashMap<String, String> map;
 
-                JSONArray latestSynonyms = reader.getJSONArray("last_synonyms");
+                ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String,String>>();;
+
+                final JSONArray latestSynonyms = reader.getJSONArray("last_synonyms");
                 JSONArray latestAntonyms = reader.getJSONArray("last_antonyms");
 
                 ArrayList<String> synonyms = new ArrayList<String>();
                 ArrayList<String> antonyms = new ArrayList<String>();
 
-                final ListView latestSynonymsList = (ListView) activity.findViewById(R.id.list_latest_synonyms);
-                final ListView latestAntonymsList = (ListView) activity.findViewById(R.id.list_latest_antonyms);
+                final ListView latestList = (ListView) activity.findViewById(R.id.latest_list);
 
                 final TextView statSynonymsNum = (TextView) activity.findViewById(R.id.synonyms_stat_num);
                 final TextView statAntonymsNum = (TextView) activity.findViewById(R.id.antonyms_stat_num);
@@ -210,39 +214,53 @@ class getStatistics extends AsyncTask<Void, Void, Void>
                 final String synonymCount = reader.getString("synonym_count");
                 final String antonymCount = reader.getString("antonym_count");
 
-                for(int i = 0; i < latestSynonyms.length(); i+=2) // // Work only on every second JSON object so there's no repetition
-                {
-                        object = latestSynonyms.getJSONObject(i);
-                        word = object.getJSONObject("word").getString("word");
-                        linkedWord = object.getJSONObject("linked_word").getString("word");
 
-                        result = word + " >> " + linkedWord;
-                        synonyms.add(result);
+                map = new HashMap<String, String>();
+                map.put(Constants.FIRST_COLUMN, "");
+                map.put(Constants.SECOND_COLUMN, "Zadnje sopomenke");
+                map.put(Constants.THIRD_COLUMN, "");
+
+                list.add(map);
+
+                for(int i = 0; i < latestSynonyms.length(); i+=2)
+                {
+                    object = latestSynonyms.getJSONObject(i);
+                    word = object.getJSONObject("word").getString("word");
+                    linkedWord = object.getJSONObject("linked_word").getString("word");
+
+
+                    map = new HashMap<String, String>();
+                    map.put(Constants.FIRST_COLUMN, word);
+                    map.put(Constants.SECOND_COLUMN, ">>");
+                    map.put(Constants.THIRD_COLUMN, linkedWord);
+
+                    list.add(map);
                 }
+
+                map = new HashMap<String, String>();
+                map.put(Constants.FIRST_COLUMN, "");
+                map.put(Constants.SECOND_COLUMN, "Zadnje protipomenke");
+                map.put(Constants.THIRD_COLUMN, "");
+
+                list.add(map);
 
                 for(int i = 0; i < latestAntonyms.length(); i+=2)
                 {
-                        object = latestAntonyms.getJSONObject(i);
-                        word = object.getJSONObject("word").getString("word");
-                        linkedWord = object.getJSONObject("linked_word").getString("word");
+                    object = latestAntonyms.getJSONObject(i);
+                    word = object.getJSONObject("word").getString("word");
+                    linkedWord = object.getJSONObject("linked_word").getString("word");
 
-                        result = word + " >> " + linkedWord;
-                        antonyms.add(result);
+
+                    map = new HashMap<String, String>();
+                    map.put(Constants.FIRST_COLUMN, word);
+                    map.put(Constants.SECOND_COLUMN, ">>");
+                    map.put(Constants.THIRD_COLUMN, linkedWord);
+
+                    list.add(map);
                 }
 
-                final ArrayAdapter<String> synonymsAdapter = new ArrayAdapter<String>(
-                        context,
-                        R.layout.list_item_word,
-                        R.id.word_txt,
-                        synonyms
-                );
+                final LatestWordsListAdapter adapter = new LatestWordsListAdapter(activity, list);
 
-                final ArrayAdapter<String> antonymsAdapter = new ArrayAdapter<String>(
-                        context,
-                        R.layout.list_item_word,
-                        R.id.word_txt,
-                        antonyms
-                );
 
 
                 activity.runOnUiThread(new Runnable() {
@@ -251,11 +269,9 @@ class getStatistics extends AsyncTask<Void, Void, Void>
                         statSynonymsNum.setText(synonymCount);
                         statAntonymsNum.setText(antonymCount);
 
-                        latestSynonymsList.setAdapter(synonymsAdapter);
-                        latestAntonymsList.setAdapter(antonymsAdapter);
+                        latestList.setAdapter(adapter);
                     }
                 });
-
 
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -26,55 +26,10 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <ListView
         android:layout_width="fill_parent"
         android:layout_height="@dimen/size_0"
         android:layout_weight="0.5"
-        android:orientation="horizontal">
-        
-        <LinearLayout
-            android:layout_width="@dimen/size_0"
-            android:layout_height="fill_parent"
-            android:layout_weight="0.5"
-            android:orientation="vertical">
-
-            <ListView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/list_synonyms"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/no_synonyms"
-                android:gravity="center"
-                android:textSize="@dimen/font_20"
-                android:id="@+id/synonyms_empty"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="@dimen/size_0"
-            android:layout_height="fill_parent"
-            android:layout_weight="0.5"
-            android:orientation="vertical">
-
-            <ListView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/list_antonyms"/>
-            
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/no_antonyms"
-                android:gravity="center"
-                android:textSize="@dimen/font_20"
-                android:id="@+id/antonyms_empty"/>
-
-
-        </LinearLayout>
-
-    </LinearLayout>
+        android:id="@+id/list_related"/>
 
 </LinearLayout>

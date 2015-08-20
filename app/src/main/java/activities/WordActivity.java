@@ -23,7 +23,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapters.WordListAdapter;
+import adapters.RelatedWordsListAdapter;
 import models.HTTPDataHandler;
 import models.Word;
 
@@ -73,8 +73,7 @@ public class WordActivity extends AppCompatActivity {
 
 }
 
-class getWordData extends AsyncTask<Void, Void, Word>
-{
+class getWordData extends AsyncTask<Void, Void, Word> {
 
     public final static String WORD_ID = "com.ziga.tezaver.WORD_ID";
     private static final String WORD_URL = "http://sopomenke.si/api/v1/words/";
@@ -95,8 +94,7 @@ class getWordData extends AsyncTask<Void, Void, Word>
     String stream = null;
     HTTPDataHandler hh = new HTTPDataHandler();
 
-    public getWordData(String id, Activity activity)
-    {
+    public getWordData(String id, Activity activity) {
         this.id = id;
         wordResult = new Word();
         this.activity = activity;
@@ -105,14 +103,11 @@ class getWordData extends AsyncTask<Void, Void, Word>
     }
 
     @Override
-    protected Word doInBackground(Void... params)
-    {
+    protected Word doInBackground(Void... params) {
         stream = hh.GetHTTPData(wordURL);
 
-        if (stream != null)
-        {
-            try
-            {
+        if (stream != null) {
+            try {
                 // Get the full HTTP Data as JSONObject
                 JSONArray reader = new JSONArray(stream);
                 JSONObject object = reader.getJSONObject(0);
@@ -124,8 +119,7 @@ class getWordData extends AsyncTask<Void, Void, Word>
                 JSONArray JSONantonyms = object.getJSONArray("antonyms");
 
                 Word tempWordObject;
-                for(int i = 0; i < JSONsynonyms.length(); i++)
-                {
+                for (int i = 0; i < JSONsynonyms.length(); i++) {
                     JSONObject tempJSONObject = JSONsynonyms.getJSONObject(i);
 
                     String tempId = tempJSONObject.getString("id");
@@ -136,8 +130,7 @@ class getWordData extends AsyncTask<Void, Void, Word>
                     synonyms.add(tempWordObject);
                 }
 
-                for(int i = 0; i < JSONantonyms.length(); i++)
-                {
+                for (int i = 0; i < JSONantonyms.length(); i++) {
                     JSONObject tempJSONObject = JSONantonyms.getJSONObject(i);
 
                     String tempId = tempJSONObject.getString("id");
@@ -162,39 +155,53 @@ class getWordData extends AsyncTask<Void, Void, Word>
     {
         TextView tvWord = (TextView) activity.findViewById(R.id.tv_word);
         TextView tvPronunciation = (TextView) activity.findViewById(R.id.tv_pronunciation);
-        ListView listSynonyms = (ListView) activity.findViewById(R.id.list_synonyms);
-        ListView listAntonyms = (ListView) activity.findViewById(R.id.list_antonyms);
+        ListView relatedWordsList = (ListView) activity.findViewById(R.id.list_related);
 
         tvWord.setText(wordResult.getWord());
         tvPronunciation.setText(wordResult.getPronunciation());
-        final WordListAdapter synonymsAdapter = new WordListAdapter(activity, wordResult.getSynonyms());
-        final WordListAdapter antonymsAdapter = new WordListAdapter(activity, wordResult.getAntonyms());
 
-        listSynonyms.setAdapter(synonymsAdapter);
-        listAntonyms.setAdapter(antonymsAdapter);
+        final List<Word> relatedWords = new ArrayList<Word>();
+        if(wordResult.getSynonyms().size()!=0)
+        {
+            relatedWords.add(0, new Word(null, "Sopomenke", null, null, null));
 
-        TextView emptySynonyms = (TextView) activity.findViewById(R.id.synonyms_empty);
-        TextView emptyAntonyms = (TextView) activity.findViewById(R.id.antonyms_empty);
-
-        listSynonyms.setEmptyView(emptySynonyms);
-        listAntonyms.setEmptyView(emptyAntonyms);
-
-
-        listSynonyms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(activity, WordActivity.class);
-                intent.putExtra(WORD_ID, synonymsAdapter.getItem(i).getId().toLowerCase());
-                activity.startActivity(intent);
+            for(Word word : wordResult.getSynonyms())
+            {
+                relatedWords.add(word);
             }
-        });
+        }
+        else
+        {
+            relatedWords.add(new Word(null, "Ni sopomenk! Dodaj jih na sopomenke.si", null, null, null));
+        }
 
-        listAntonyms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        if(wordResult.getAntonyms().size()!=0)
+        {
+            relatedWords.add(new Word(null, "Protipomenke", null, null, null));
+
+            for(Word word : wordResult.getAntonyms())
+            {
+                relatedWords.add(word);
+            }
+        }
+        else
+        {
+            relatedWords.add(new Word(null, "Ni protipomenk! Dodaj jih na sopomenke.si", null, null, null));
+        }
+
+        final RelatedWordsListAdapter relatedWordsAdapter = new RelatedWordsListAdapter(activity, relatedWords);
+        relatedWordsList.setAdapter(relatedWordsAdapter);
+
+        relatedWordsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(activity, WordActivity.class);
-                intent.putExtra(WORD_ID, antonymsAdapter.getItem(i).getId().toLowerCase());
-                activity.startActivity(intent);
+                String id = relatedWordsAdapter.getItem(i).getId();
+                if(id!=null)
+                {
+                    Intent intent = new Intent(activity, WordActivity.class);
+                    intent.putExtra(WORD_ID, id.toLowerCase());
+                    activity.startActivity(intent);
+                }
             }
         });
     }
@@ -203,5 +210,6 @@ class getWordData extends AsyncTask<Void, Void, Word>
     {
         return WORD_URL + wordId.toLowerCase();
     }
+
 
 }
