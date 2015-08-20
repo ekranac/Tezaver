@@ -25,6 +25,7 @@ import java.util.List;
 
 import adapters.RelatedWordsListAdapter;
 import models.HTTPDataHandler;
+import models.ScalableTextView;
 import models.Word;
 
 
@@ -153,7 +154,7 @@ class getWordData extends AsyncTask<Void, Void, Word> {
     @Override
     protected void onPostExecute(Word wordResult)
     {
-        TextView tvWord = (TextView) activity.findViewById(R.id.tv_word);
+        ScalableTextView tvWord = (ScalableTextView) activity.findViewById(R.id.tv_word);
         TextView tvPronunciation = (TextView) activity.findViewById(R.id.tv_pronunciation);
         ListView relatedWordsList = (ListView) activity.findViewById(R.id.list_related);
 

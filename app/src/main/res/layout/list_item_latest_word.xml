@@ -15,7 +15,7 @@
         android:paddingLeft="@dimen/size_10"
         android:id="@+id/first_word"/>
 
-    <TextView
+    <models.ScalableTextView
         android:layout_width="0dp"
         android:layout_height="@dimen/size_50"
         android:layout_weight="1"
