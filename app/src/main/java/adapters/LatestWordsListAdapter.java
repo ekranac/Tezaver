@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import helpers.Constants;
-import models.ScalableTextView;
 
 
 public class LatestWordsListAdapter extends BaseAdapter
@@ -24,7 +23,7 @@ public class LatestWordsListAdapter extends BaseAdapter
     private ArrayList<HashMap<String, String>> list;
 
     TextView firstWord;
-    ScalableTextView middleSpace;
+    TextView middleSpace;
     TextView secondWord;
 
     public LatestWordsListAdapter(Activity activity, ArrayList<HashMap<String, String>> list)
@@ -62,7 +61,7 @@ public class LatestWordsListAdapter extends BaseAdapter
         }
 
         firstWord = (TextView) result.findViewById(R.id.first_word);
-        middleSpace = (ScalableTextView) result.findViewById(R.id.middle_space);
+        middleSpace = (TextView) result.findViewById(R.id.middle_space);
         secondWord = (TextView) result.findViewById(R.id.second_word);
 
         HashMap<String, String> map = list.get(position);
