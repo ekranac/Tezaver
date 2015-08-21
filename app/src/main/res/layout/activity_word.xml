@@ -41,7 +41,7 @@
 
     </RelativeLayout>
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="fill_parent"
         android:layout_height="@dimen/size_0"
         android:layout_weight="0.5"

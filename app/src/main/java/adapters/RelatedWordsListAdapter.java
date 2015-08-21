@@ -2,10 +2,11 @@ package adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.ziga.tezaver.R;
@@ -13,10 +14,11 @@ import com.ziga.tezaver.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.RelatedWordViewHolder;
 import models.Word;
 
 
-public class RelatedWordsListAdapter extends BaseAdapter
+public class RelatedWordsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     private Activity activity;
     private Context context;
@@ -25,56 +27,71 @@ public class RelatedWordsListAdapter extends BaseAdapter
     private TextView relatedWord;
     private Word wordObject;
 
+    private static final int TYPE_TITLE = 0;
+    private static final int TYPE_STANDARD = 1;
+
     public RelatedWordsListAdapter(Activity activity, List<Word> list)
     {
-        super();
-        this.list = list;
         this.activity = activity;
         this.context = activity.getBaseContext();
+        this.list = list;
     }
 
-
-    @Override
-    public Word getItem(int position) {
-        if (list != null)
-            return list.get(position);
-
-        return null;
-    }
-
-    @Override
-    public int getCount() {
-        if (list != null)
-            return list.size();
-
-        return 0;
+    public void updateList(List<Word> data)
+    {
+        list = data;
+        notifyDataSetChanged();
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View result = convertView;
-
-        if (result == null) {
-            LayoutInflater inf = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            result = inf.inflate(R.layout.list_item_related_word, parent, false);
-        }
-
-        relatedWord = (TextView) result.findViewById(R.id.related_word);
-
-        wordObject = list.get(position);
-        if(wordObject!=null)
+    public int getItemCount()
+    {
+        if(list!=null)
         {
-            relatedWord.setText(wordObject.getWord());
+            return list.size();
         }
-
-        return result;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        if (list != null)
-            return list.get(position).hashCode();
 
         return 0;
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        int viewType;
+
+        if(list.get(position).getId()==null)
+        {
+            viewType = TYPE_TITLE;
+        }
+        else
+        {
+            viewType = TYPE_STANDARD;
+        }
+        return viewType;
+    }
+
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)
+    {
+        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
+        View itemView = inflater.inflate(R.layout.list_item_related_word, viewGroup, false);
+
+        return new RelatedWordViewHolder(itemView);
+
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position)
+    {
+
+        wordObject= list.get(position);
+        RelatedWordViewHolder titleHolder = (RelatedWordViewHolder) viewHolder;
+        titleHolder.title.setText(wordObject.getWord());
+
+        if(viewHolder.getItemViewType()==TYPE_TITLE)
+        {
+            titleHolder.title.setTypeface(null, Typeface.BOLD);
+        }
+    }
+
 }
