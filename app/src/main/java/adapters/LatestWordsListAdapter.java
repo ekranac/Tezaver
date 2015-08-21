@@ -80,7 +80,7 @@ public class LatestWordsListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         {
             case TYPE_TITLE:
                 itemView = inflater.inflate(R.layout.list_item_related_word, viewGroup, false);
-                RelatedWordViewHolder titleHolder = new RelatedWordViewHolder(itemView);
+                RelatedWordViewHolder titleHolder = new RelatedWordViewHolder(activity, itemView, null);
 
                 return titleHolder;
 

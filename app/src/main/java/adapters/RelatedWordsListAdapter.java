@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +77,7 @@ public class RelatedWordsListAdapter extends RecyclerView.Adapter<RecyclerView.V
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View itemView = inflater.inflate(R.layout.list_item_related_word, viewGroup, false);
 
-        return new RelatedWordViewHolder(itemView);
+        return new RelatedWordViewHolder(activity, itemView, null);
 
     }
 
@@ -91,6 +92,10 @@ public class RelatedWordsListAdapter extends RecyclerView.Adapter<RecyclerView.V
         if(viewHolder.getItemViewType()==TYPE_TITLE)
         {
             titleHolder.title.setTypeface(null, Typeface.BOLD);
+        }
+        else
+        {
+            titleHolder.setWordId(list.get(position).getId());
         }
     }
 
