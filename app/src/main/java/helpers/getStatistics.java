@@ -93,6 +93,9 @@ public class getStatistics extends AsyncTask<Void, Void, Void>
                     map.put(Constants.SECOND_COLUMN, ">>");
                     map.put(Constants.THIRD_COLUMN, linkedWord);
 
+                    map.put(Constants.FIRST_ID, object.getJSONObject("word").getString("id"));
+                    map.put(Constants.SECOND_ID, object.getJSONObject("linked_word").getString("id"));
+
                     list.add(map);
                 }
 
@@ -114,6 +117,9 @@ public class getStatistics extends AsyncTask<Void, Void, Void>
                     map.put(Constants.FIRST_COLUMN, word);
                     map.put(Constants.SECOND_COLUMN, ">>");
                     map.put(Constants.THIRD_COLUMN, linkedWord);
+
+                    map.put(Constants.FIRST_ID, object.getJSONObject("word").getString("id"));
+                    map.put(Constants.SECOND_ID, object.getJSONObject("linked_word").getString("id"));
 
                     list.add(map);
                 }

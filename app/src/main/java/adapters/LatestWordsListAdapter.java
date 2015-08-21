@@ -2,8 +2,10 @@ package adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import com.ziga.tezaver.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import activities.WordActivity;
 import helpers.Constants;
 import models.LatestWordViewHolder;
 import models.RelatedWordViewHolder;
@@ -30,6 +33,9 @@ public class LatestWordsListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     private static final int TYPE_TITLE = 0;
     private static final int TYPE_STANDARD = 1;
+
+
+    public final static String WORD_ID = "com.ziga.tezaver.WORD_ID";
 
     public LatestWordsListAdapter(Activity activity, ArrayList<HashMap<String, String>> list)
     {
@@ -86,7 +92,7 @@ public class LatestWordsListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
             default:
                 itemView = inflater.inflate(R.layout.list_item_latest_word, viewGroup, false);
-                LatestWordViewHolder mainHolder = new LatestWordViewHolder(itemView);
+                LatestWordViewHolder mainHolder = new LatestWordViewHolder(activity, itemView, null, null);
 
                 return mainHolder;
         }
@@ -110,8 +116,34 @@ public class LatestWordsListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 titleHolder.title.setTypeface(null, Typeface.BOLD);
                 titleHolder.title.setText(secondValue);
                 break;
+
             default:
                 LatestWordViewHolder mainHolder = (LatestWordViewHolder) viewHolder;
+
+                final String firstId = map.get(Constants.FIRST_ID);
+                final String secondId = map.get(Constants.SECOND_ID);
+
+                mainHolder.setFirstWordId(firstId);
+                mainHolder.setSecondWordId(secondId);
+
+                mainHolder.firstWord.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(activity, WordActivity.class);
+                        intent.putExtra(WORD_ID, firstId.toLowerCase());
+                        activity.startActivity(intent);
+                    }
+                });
+
+                mainHolder.secondWord.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(activity, WordActivity.class);
+                        intent.putExtra(WORD_ID, secondId.toLowerCase());
+                        activity.startActivity(intent);
+                    }
+                });
+
                 mainHolder.firstWord.setText(firstValue);
                 mainHolder.middleSpace.setText(secondValue);
                 mainHolder.secondWord.setText(thirdValue);
