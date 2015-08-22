@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.ziga.tezaver.R;
 
+import helpers.Constants;
 import helpers.getWordData;
 
 
@@ -24,7 +25,7 @@ public class WordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_word);
 
         Intent intent = getIntent();
-        String id = intent.getStringExtra(MainActivity.WORD_ID);
+        String id = intent.getStringExtra(Constants.WORD_ID);
         if(id!=null)
         {
             id = id.toLowerCase();

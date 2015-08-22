@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -23,101 +25,119 @@ import android.widget.TextView;
 import com.ziga.tezaver.R;
 
 import adapters.WordSearchAdapter;
+import helpers.Constants;
 import helpers.getStatistics;
 
 
 public class MainActivity extends AppCompatActivity {
 
     WordSearchAdapter adapter;
-    public final static String WORD_ID = "com.ziga.tezaver.WORD_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        final AutoCompleteTextView search = (AutoCompleteTextView) findViewById(R.id.main_search);
-        final Button searchIcon = (Button) findViewById(R.id.btn_search_icon);
-        final Button clearSearch = (Button) findViewById(R.id.btn_clear_search);
         ActionBar bar = getSupportActionBar();
-        Typeface robotoSlab = Typeface.createFromAsset(this.getAssets(), "RobotoSlab.ttf");
-
-        TextView statSynonyms = (TextView) findViewById(R.id.synonyms_stat);
-        TextView statSynonymsNum = (TextView) findViewById(R.id.synonyms_stat_num);
-        TextView statAntonyms = (TextView) findViewById(R.id.antonyms_stat);
-        TextView statAntonymsNum = (TextView) findViewById(R.id.antonyms_stat_num);
-
-        statSynonyms.setTypeface(robotoSlab);
-        statSynonymsNum.setTypeface(robotoSlab);
-        statAntonyms.setTypeface(robotoSlab);
-        statAntonymsNum.setTypeface(robotoSlab);
-
-        RecyclerView latestList = (RecyclerView) findViewById(R.id.latest_list);
-        latestList.setHasFixedSize(true);
-
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
-        latestList.setLayoutManager(mLayoutManager);
-
-
         if(bar!=null)
         {
             bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.dark_blue)));
         }
 
-        adapter = new WordSearchAdapter(this, null);
-        search.setAdapter(adapter);
+        if(isConnected())
+        {
+            setContentView(R.layout.activity_main);
 
-        new getStatistics(this).execute();
+            final AutoCompleteTextView search = (AutoCompleteTextView) findViewById(R.id.main_search);
+            final Button searchIcon = (Button) findViewById(R.id.btn_search_icon);
+            final Button clearSearch = (Button) findViewById(R.id.btn_clear_search);
+            Typeface robotoSlab = Typeface.createFromAsset(this.getAssets(), "RobotoSlab.ttf");
+
+            TextView statSynonyms = (TextView) findViewById(R.id.synonyms_stat);
+            TextView statSynonymsNum = (TextView) findViewById(R.id.synonyms_stat_num);
+            TextView statAntonyms = (TextView) findViewById(R.id.antonyms_stat);
+            TextView statAntonymsNum = (TextView) findViewById(R.id.antonyms_stat_num);
+
+            statSynonyms.setTypeface(robotoSlab);
+            statSynonymsNum.setTypeface(robotoSlab);
+            statAntonyms.setTypeface(robotoSlab);
+            statAntonymsNum.setTypeface(robotoSlab);
+
+            RecyclerView latestList = (RecyclerView) findViewById(R.id.latest_list);
+            latestList.setHasFixedSize(true);
+
+            LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+            latestList.setLayoutManager(mLayoutManager);
+
+            adapter = new WordSearchAdapter(this, null);
+            search.setAdapter(adapter);
+
+            new getStatistics(this).execute();
 
 
-        search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                search.setText("");
+            search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    search.setText("");
 
-                Intent intent = new Intent(MainActivity.this, WordActivity.class);
-                intent.putExtra(WORD_ID, adapter.getItem(i).getId().toLowerCase());
-                startActivity(intent);
-            }
-        });
-
-        search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (search.length() == 0) {
-                    clearSearch.setVisibility(View.INVISIBLE);
-                    searchIcon.setVisibility(View.VISIBLE);
-                } else {
-                    clearSearch.setVisibility(View.VISIBLE);
-                    searchIcon.setVisibility(View.INVISIBLE);
+                    Intent intent = new Intent(MainActivity.this, WordActivity.class);
+                    intent.putExtra(Constants.WORD_ID, adapter.getItem(i).getId().toLowerCase());
+                    startActivity(intent);
                 }
-            }
+            });
 
-            @Override
-            public void afterTextChanged(Editable editable) {
-            }
-        });
+            search.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                }
 
-        clearSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                search.setText("");
-            }
-        });
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    if (search.length() == 0) {
+                        clearSearch.setVisibility(View.INVISIBLE);
+                        searchIcon.setVisibility(View.VISIBLE);
+                    } else {
+                        clearSearch.setVisibility(View.VISIBLE);
+                        searchIcon.setVisibility(View.INVISIBLE);
+                    }
+                }
 
-        searchIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                search.requestFocus();
+                @Override
+                public void afterTextChanged(Editable editable) {
+                }
+            });
 
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.showSoftInput(search, InputMethodManager.SHOW_IMPLICIT);
-            }
-        });
+            clearSearch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    search.setText("");
+                }
+            });
+
+            searchIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    search.requestFocus();
+
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.showSoftInput(search, InputMethodManager.SHOW_IMPLICIT);
+                }
+            });
+        }
+
+        else
+        {
+            setContentView(R.layout.layout_no_connection);
+
+            Button refreshButton = (Button) findViewById(R.id.refresh_btn);
+            refreshButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
 
@@ -152,10 +172,23 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         AutoCompleteTextView search = (AutoCompleteTextView) findViewById(R.id.main_search);
-        if(search.hasFocus())
+        if(search!=null && search.hasFocus())
         {
             search.clearFocus();
         }
     }
 
+    private boolean isConnected()
+    {
+        Boolean isConnected = false;
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+
+        if(ni!=null)
+        {
+            isConnected = true;
+        }
+
+        return isConnected;
+    }
 }
