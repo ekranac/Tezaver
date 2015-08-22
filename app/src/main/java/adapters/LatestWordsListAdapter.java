@@ -1,11 +1,9 @@
 package adapters;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,25 +27,14 @@ public class LatestWordsListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     private ArrayList<HashMap<String, String>> list;
     private Activity activity;
-    private Context context;
 
     private static final int TYPE_TITLE = 0;
     private static final int TYPE_STANDARD = 1;
 
-
-    public final static String WORD_ID = "com.ziga.tezaver.WORD_ID";
-
     public LatestWordsListAdapter(Activity activity, ArrayList<HashMap<String, String>> list)
     {
         this.activity = activity;
-        this.context = activity.getBaseContext();
         this.list = list;
-    }
-
-    public void updateList(ArrayList<HashMap<String, String>> data)
-    {
-        list = data;
-        notifyDataSetChanged();
     }
 
     @Override
@@ -65,7 +52,7 @@ public class LatestWordsListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public int getItemViewType(int position) {
         int viewType;
 
-        if(list.get(position).get(Constants.FIRST_COLUMN)=="")
+        if(list.get(position).get(Constants.FIRST_COLUMN).equals(""))
         {
             viewType = TYPE_TITLE;
         }
@@ -86,15 +73,11 @@ public class LatestWordsListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         {
             case TYPE_TITLE:
                 itemView = inflater.inflate(R.layout.list_item_related_word, viewGroup, false);
-                RelatedWordViewHolder titleHolder = new RelatedWordViewHolder(activity, itemView, null);
-
-                return titleHolder;
+                return new RelatedWordViewHolder(activity, itemView, null);
 
             default:
                 itemView = inflater.inflate(R.layout.list_item_latest_word, viewGroup, false);
-                LatestWordViewHolder mainHolder = new LatestWordViewHolder(activity, itemView, null, null);
-
-                return mainHolder;
+                return new LatestWordViewHolder(activity, itemView, null, null);
         }
 
     }
@@ -130,7 +113,7 @@ public class LatestWordsListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(activity, WordActivity.class);
-                        intent.putExtra(WORD_ID, firstId.toLowerCase());
+                        intent.putExtra(Constants.WORD_ID, firstId.toLowerCase());
                         activity.startActivity(intent);
                     }
                 });
@@ -139,7 +122,7 @@ public class LatestWordsListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(activity, WordActivity.class);
-                        intent.putExtra(WORD_ID, secondId.toLowerCase());
+                        intent.putExtra(Constants.WORD_ID, secondId.toLowerCase());
                         activity.startActivity(intent);
                     }
                 });

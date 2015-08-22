@@ -1,20 +1,20 @@
 package adapters;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.ziga.tezaver.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import activities.WordActivity;
+import helpers.Constants;
 import models.RelatedWordViewHolder;
 import models.Word;
 
@@ -22,10 +22,8 @@ import models.Word;
 public class RelatedWordsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     private Activity activity;
-    private Context context;
     private List<Word> list = new ArrayList<Word>();
 
-    private TextView relatedWord;
     private Word wordObject;
 
     private static final int TYPE_TITLE = 0;
@@ -34,14 +32,7 @@ public class RelatedWordsListAdapter extends RecyclerView.Adapter<RecyclerView.V
     public RelatedWordsListAdapter(Activity activity, List<Word> list)
     {
         this.activity = activity;
-        this.context = activity.getBaseContext();
         this.list = list;
-    }
-
-    public void updateList(List<Word> data)
-    {
-        list = data;
-        notifyDataSetChanged();
     }
 
     @Override
@@ -82,7 +73,7 @@ public class RelatedWordsListAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position)
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position)
     {
 
         wordObject= list.get(position);
@@ -96,6 +87,18 @@ public class RelatedWordsListAdapter extends RecyclerView.Adapter<RecyclerView.V
         else
         {
             titleHolder.setWordId(list.get(position).getId());
+            titleHolder.title.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String wordId = list.get(position).getId();
+                    if(wordId!=null)
+                    {
+                        Intent intent = new Intent(activity, WordActivity.class);
+                        intent.putExtra(Constants.WORD_ID, wordId.toLowerCase());
+                        activity.startActivity(intent);
+                    }
+                }
+            });
         }
     }
 

@@ -1,15 +1,11 @@
 package models;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.ziga.tezaver.R;
-
-import activities.WordActivity;
 
 public class LatestWordViewHolder extends RecyclerView.ViewHolder {
 

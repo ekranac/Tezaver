@@ -1,14 +1,8 @@
 package helpers;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.internal.widget.AdapterViewCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ziga.tezaver.R;
@@ -26,7 +20,6 @@ import models.Word;
 
 public class getWordData extends AsyncTask<Void, Void, Word> {
 
-    public final static String WORD_ID = "com.ziga.tezaver.WORD_ID";
     private static final String WORD_URL = "http://sopomenke.si/api/v1/words/";
 
     String id;
@@ -143,14 +136,6 @@ public class getWordData extends AsyncTask<Void, Void, Word> {
 
         final RelatedWordsListAdapter relatedWordsAdapter = new RelatedWordsListAdapter(activity, relatedWords);
         relatedWordsList.setAdapter(relatedWordsAdapter);
-
-        relatedWordsList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i("Clicked", "Wtf");
-            }
-        });
-
 
         /*relatedWordsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
