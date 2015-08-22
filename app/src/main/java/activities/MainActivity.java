@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                         searchIcon.setVisibility(View.VISIBLE);
                     } else {
                         clearSearch.setVisibility(View.VISIBLE);
-                        searchIcon.setVisibility(View.INVISIBLE);
+                        searchIcon.setVisibility(View.GONE);
                     }
                 }
 
@@ -110,16 +110,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     search.setText("");
-                }
-            });
-
-            searchIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    search.requestFocus();
-
-                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    inputMethodManager.showSoftInput(search, InputMethodManager.SHOW_IMPLICIT);
                 }
             });
         }
