@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final AutoCompleteTextView search = (AutoCompleteTextView) findViewById(R.id.main_search);
+        final Button searchIcon = (Button) findViewById(R.id.btn_search_icon);
         final Button clearSearch = (Button) findViewById(R.id.btn_clear_search);
         ActionBar bar = getSupportActionBar();
         Typeface robotoSlab = Typeface.createFromAsset(this.getAssets(), "RobotoSlab.ttf");
@@ -89,8 +90,10 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (search.length() == 0) {
                     clearSearch.setVisibility(View.INVISIBLE);
+                    searchIcon.setVisibility(View.VISIBLE);
                 } else {
                     clearSearch.setVisibility(View.VISIBLE);
+                    searchIcon.setVisibility(View.INVISIBLE);
                 }
             }
 
@@ -103,6 +106,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 search.setText("");
+            }
+        });
+
+        searchIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                search.requestFocus();
+
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.showSoftInput(search, InputMethodManager.SHOW_IMPLICIT);
             }
         });
     }
@@ -124,15 +137,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.search_btn) {
-            AutoCompleteTextView search = (AutoCompleteTextView) findViewById(R.id.main_search);
-            search.setFocusableInTouchMode(true);
-            search.requestFocus();
-
-            final InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputMethodManager.showSoftInput(search, InputMethodManager.SHOW_IMPLICIT);
-        }
-        else if(id==R.id.menu_help)
+        if(id==R.id.menu_help)
         {
             Intent intent = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(intent);

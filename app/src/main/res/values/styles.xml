@@ -5,4 +5,9 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="list_item">
+        <item name="android:textSize">@dimen/font_20</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:singleLine">true</item>
+    </style>
 </resources>

@@ -5,15 +5,20 @@
     android:layout_height="@dimen/size_50"
     android:orientation="horizontal">
 
-    <TextView
+    <me.grantland.widget.AutofitLayout
         android:layout_width="0dp"
         android:layout_height="@dimen/size_50"
-        android:layout_weight="1"
-        android:textSize="@dimen/font_20"
-        android:textColor="@color/dark_blue"
-        android:gravity="center|start"
-        android:paddingLeft="@dimen/size_10"
-        android:id="@+id/first_word"/>
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            style="@style/list_item"
+            android:gravity="center|start"
+            android:paddingLeft="@dimen/size_10"
+            android:id="@+id/first_word"/>
+
+    </me.grantland.widget.AutofitLayout>
 
     <me.grantland.widget.AutofitLayout
         android:layout_width="0dp"
@@ -23,22 +28,27 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:textSize="@dimen/font_20"
-            android:textColor="@color/dark_blue"
+            style="@style/list_item"
             android:gravity="center"
-            android:singleLine="true"
             android:id="@+id/middle_space"/>
 
     </me.grantland.widget.AutofitLayout>
 
-    <TextView
+    <me.grantland.widget.AutofitLayout
         android:layout_width="0dp"
         android:layout_height="@dimen/size_50"
-        android:layout_weight="1"
-        android:textSize="@dimen/font_20"
-        android:textColor="@color/dark_blue"
-        android:gravity="center|end"
-        android:paddingRight="@dimen/size_10"
-        android:id="@+id/second_word"/>
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            style="@style/list_item"
+            android:gravity="center|end"
+            android:paddingRight="@dimen/size_10"
+            android:id="@+id/second_word"/>
+
+        </me.grantland.widget.AutofitLayout>
+
+
 
 </LinearLayout>
