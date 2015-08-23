@@ -112,6 +112,16 @@ public class MainActivity extends AppCompatActivity {
                     search.setText("");
                 }
             });
+
+            searchIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    search.requestFocus();
+
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.showSoftInput(search, InputMethodManager.SHOW_IMPLICIT);
+                }
+            });
         }
 
         else
