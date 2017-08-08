@@ -20,7 +20,7 @@ import models.HTTPDataHandler;
 
 public class getStatistics extends AsyncTask<Void, Void, Void>
 {
-    private static final String STATISTICS_URL = "http://sopomenke.si/api/v1/stats";
+    private static final String STATISTICS_URL = "https://sopomenke.si/api/v1/stats";
 
     Activity activity;
     Context context;

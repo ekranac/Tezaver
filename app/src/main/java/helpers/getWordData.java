@@ -1,12 +1,13 @@
 package helpers;
 
+import adapters.RelatedWordsListAdapter;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
-
 import com.ziga.tezaver.R;
-
+import models.HTTPDataHandler;
+import models.Word;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,13 +15,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapters.RelatedWordsListAdapter;
-import models.HTTPDataHandler;
-import models.Word;
-
 public class getWordData extends AsyncTask<Void, Void, Word> {
 
-    private static final String WORD_URL = "http://sopomenke.si/api/v1/words/";
+    private static final String WORD_URL = "https://sopomenke.si/api/v1/words/";
 
     String id;
     Word wordResult;

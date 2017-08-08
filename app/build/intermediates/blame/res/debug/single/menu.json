@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/ziga/android-projects/Tezaver/app/build/intermediates/res/merged/debug/menu/menu_word_activity.xml",
+        "source": "/Users/ziga/android-projects/Tezaver/app/src/main/res/menu/menu_word_activity.xml"
+    },
+    {
+        "merged": "/Users/ziga/android-projects/Tezaver/app/build/intermediates/res/merged/debug/menu/menu_main.xml",
+        "source": "/Users/ziga/android-projects/Tezaver/app/src/main/res/menu/menu_main.xml"
+    }
+]

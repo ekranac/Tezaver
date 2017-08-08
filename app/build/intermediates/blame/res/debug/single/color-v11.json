@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/ziga/android-projects/Tezaver/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/Users/ziga/.android/build-cache/5d42f01edc3b3fceea1be6b55d1529ab7f28b775/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "/Users/ziga/android-projects/Tezaver/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/Users/ziga/.android/build-cache/5d42f01edc3b3fceea1be6b55d1529ab7f28b775/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+    }
+]

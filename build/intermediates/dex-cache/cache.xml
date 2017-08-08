@@ -2,46 +2,58 @@
 <items version="2" >
 
     <item
-        jar="/home/ziga/android-projects/Tezaver/app/build/intermediates/exploded-aar/me.grantland/autofittextview/0.2.1/jars/classes.jar"
+        is-multidex="false"
+        jar="/Users/ziga/.android/build-cache/419ead9989b5faed2745f2ea1b4907f3ad05ff9b/output/jars/classes.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="972ca945f0cf5ff0765ab94fa8e1a90661ea197a">
-        <dex dex="/home/ziga/android-projects/Tezaver/app/build/intermediates/pre-dexed/release/classes-5db8d9d825f1e02630868ad901b5513e56e1063f.jar" />
-    </item>
-    <item
-        jar="/home/ziga/android-projects/Tezaver/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
+        optimize="true"
+        revision="25.0.0"
         sha1="c6d79137693d494dee16372d3921f919eb724ced">
-        <dex dex="/home/ziga/android-projects/Tezaver/app/build/intermediates/pre-dexed/release/classes-d10d145a0749fcb8bb0f73661d81587bac0c3551.jar" />
+        <dex dex="/Users/ziga/android-projects/Tezaver/app/build/intermediates/pre-dexed/debug/classes_3ab03b8bf4cc46af7143b6cdcd30dd89498a1cfd.jar" />
     </item>
     <item
-        jar="/home/ziga/android-projects/Tezaver/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        is-multidex="false"
+        jar="/Users/ziga/.android/build-cache/6ebe343c47def4748b5819a97d2dc2efcedf8dcd/output/jars/classes.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="/home/ziga/android-projects/Tezaver/app/build/intermediates/pre-dexed/release/internal_impl-22.2.0-9bfe68fb46e6f633a327470a1258a7de529b8b99.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="972ca945f0cf5ff0765ab94fa8e1a90661ea197a">
+        <dex dex="/Users/ziga/android-projects/Tezaver/app/build/intermediates/pre-dexed/debug/classes_79b3aa2479963415819faff1b97a133a915564dc.jar" />
     </item>
     <item
-        jar="/home/ziga/android-projects/Tezaver/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        is-multidex="false"
+        jar="/Users/ziga/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="/home/ziga/android-projects/Tezaver/app/build/intermediates/pre-dexed/release/classes-0d628b1a32e13a995c0e468e1a9d6f8e63d30d5a.jar" />
-    </item>
-    <item
-        jar="/home/ziga/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
+        optimize="true"
+        revision="25.0.0"
         sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="/home/ziga/android-projects/Tezaver/app/build/intermediates/pre-dexed/release/support-annotations-22.2.0-eec114905b653f890228ab33b1a7db5546e08cc0.jar" />
+        <dex dex="/Users/ziga/android-projects/Tezaver/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0_7f4df5235f32d28b07d7e8faa7d01c7f6b04d76e.jar" />
     </item>
     <item
-        jar="/home/ziga/android-projects/Tezaver/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        is-multidex="false"
+        jar="/Users/ziga/.android/build-cache/5d42f01edc3b3fceea1be6b55d1529ab7f28b775/output/jars/classes.jar"
         jumboMode="false"
-        revision="21.1.2"
+        optimize="true"
+        revision="25.0.0"
         sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="/home/ziga/android-projects/Tezaver/app/build/intermediates/pre-dexed/release/classes-9c25661eb1259e591c7d2da24fcaabc9b361503a.jar" />
+        <dex dex="/Users/ziga/android-projects/Tezaver/app/build/intermediates/pre-dexed/debug/classes_4f8f311311475db72b0e90e35a2104f322caba0e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/ziga/.android/build-cache/5edb930442bef550170e207d73274edfe36d44b4/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/ziga/android-projects/Tezaver/app/build/intermediates/pre-dexed/debug/classes_b46a18d1dc5184925a3acc7872c858c00f389a78.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/ziga/.android/build-cache/5edb930442bef550170e207d73274edfe36d44b4/output/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/ziga/android-projects/Tezaver/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0_eb0dc9e471b655edfcfabae2e40128141ce00518.jar" />
     </item>
 
 </items>
